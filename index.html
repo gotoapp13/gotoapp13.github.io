@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang=ru>
+<head>
+
+	<meta name=robots content="noindex, nofollow">
+	<meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1">
+	<meta http-equiv=X-UA-Compatible content="ie=edge">
+	<title>Слайдер до-после</title>
+
+	<link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css>
+
+	<style>
+		body{ display:flex;align-items:center;justify-content:center;padding:30px;min-height:100vh }
+		.image-comparison{position:relative;display:inline-block;width:800px;width:100%;max-width:800px;overflow:hidden}
+		.image-comparison__before{position:absolute;width:50%;overflow:hidden}.image-comparison__image{display:block}
+		.image-comparison__slider{padding:0;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:3px;height:100%;cursor:col-resize;outline:0;border:none}
+		.image-comparison__slider::before{content:'';position:absolute;top:calc(50% - 15px);left:-14px;width:30px;height:30px;border-radius:50%;background:transparent url(img/arrows.png) no-repeat center;border:2px solid #fff;background-size:90%}
+		.image-comprison__slider:focus,.image-comprison__slider:focus::before,.image-comprison__slider:hover,.image-comprison__slider:hover::before{background-color:#ccc;outline:0;border:none}
+</style>
+
+</head>
+
+<body>
+
+	<div id=image-comparison>
+		<img src=./img/1.jpg alt=alt>
+		<img src=./img/2.jpg alt=alt>
+	</div>
+
+	<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+	<script>
+		function imageComparison(o){let i=$(o).addClass("image-comparison").prepend('<div class="image-comparison__before"></div>').append('<button class="image-comparison__slider"></button>'),e=i.find("img").addClass("image-comparison__image").css("max-width",i.width()),s=i.find(".image-comparison__before").append(e.eq(0));i.find(".image-comparison__slider").on("dragstart",()=>!1).on("mousedown",(function(o){let e=$(this),a=$(document).on("mousemove",o=>{let a=o.pageX-i.position().left,m=i.width();a<0&&(a=0),a>m&&(a=m),e.css("left",a+"px"),s.css("width",a+"px")});a.on("mouseup",()=>a.off("mousemove"))}))}imageComparison("#image-comparison")
+</script>
+
+</body>
+
+</html>
