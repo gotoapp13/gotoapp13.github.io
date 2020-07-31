@@ -27,11 +27,7 @@
 		<img src=./img/2.jpg alt=alt>
 	</div>
 
-	<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-	<script>
-		function imageComparison(o){let i=$(o).addClass("image-comparison").prepend('<div class="image-comparison__before"></div>').append('<button class="image-comparison__slider"></button>'),e=i.find("img").addClass("image-comparison__image").css("max-width",i.width()),s=i.find(".image-comparison__before").append(e.eq(0));i.find(".image-comparison__slider").on("dragstart",()=>!1).on("mousedown",(function(o){let e=$(this),a=$(document).on("mousemove",o=>{let a=o.pageX-i.position().left,m=i.width();a<0&&(a=0),a>m&&(a=m),e.css("left",a+"px"),s.css("width",a+"px")});a.on("mouseup",()=>a.off("mousemove"))}))}imageComparison("#image-comparison")
-</script>
+	
 
 </body>
 
